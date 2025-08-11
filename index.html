@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lojë Asociacione</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #1e1e1e;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+    .columns {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+    .column {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 12px;
+        width: 180px;
+    }
+    .item {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .front {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .back {
+        visibility: hidden;
+        text-align: center;
+    }
+    .item.revealed .front {
+        visibility: hidden;
+    }
+    .item.revealed .back {
+        visibility: visible;
+    }
+    input {
+        background-color: transparent;
+        border: 2px solid #fff;
+        border-radius: 8px;
+        padding: 8px;
+        width: 160px;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        outline: none;
+        margin-top: 5px;
+    }
+    input:focus {
+        border-color: #00ffcc;
+    }
+    button {
+        margin-top: 5px;
+        padding: 6px 12px;
+        background-color: transparent;
+        border: 2px solid #00ffcc;
+        border-radius: 8px;
+        color: #00ffcc;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    button:hover {
+        background-color: #00ffcc;
+        color: #1e1e1e;
+    }
+</style>
+</head>
+<body>
+<h1>Lojë Asociacione</h1>
+<div class="columns">
+    <div class="column" id="colA">
+        <div class="item"><div class="front">A1</div><div class="back">TikTok</div></div>
+        <div class="item"><div class="front">A2</div><div class="back">Instagram</div></div>
+        <div class="item"><div class="front">A3</div><div class="back">Snapchat</div></div>
+        <div class="item"><div class="front">A4</div><div class="back">YouTube</div></div>
+        <input type="text" placeholder="Fjala A" id="inputA">
+        <button onclick="checkAnswer('A','Rrjete Sociale')">Kontrollo A</button>
+    </div>
+    <div class="column" id="colB">
+        <div class="item"><div class="front">B1</div><div class="back">Messi</div></div>
+        <div class="item"><div class="front">B2</div><div class="back">Ronaldo</div></div>
+        <div class="item"><div class="front">B3</div><div class="back">Mbappe</div></div>
+        <div class="item"><div class="front">B4</div><div class="back">Lewandowski</div></div>
+        <input type="text" placeholder="Fjala B" id="inputB">
+        <button onclick="checkAnswer('B','Futbollistë')">Kontrollo B</button>
+    </div>
+    <div class="column" id="colC">
+        <div class="item"><div class="front">C1</div><div class="back">Pica</div></div>
+        <div class="item"><div class="front">C2</div><div class="back">Hamburger</div></div>
+        <div class="item"><div class="front">C3</div><div class="back">Hotdog</div></div>
+        <div class="item"><div class="front">C4</div><div class="back">Patatina</div></div>
+        <input type="text" placeholder="Fjala C" id="inputC">
+        <button onclick="checkAnswer('C','Ushqime Fast Food')">Kontrollo C</button>
+    </div>
+    <div class="column" id="colD">
+        <div class="item"><div class="front">D1</div><div class="back">Fortnite</div></div>
+        <div class="item"><div class="front">D2</div><div class="back">Minecraft</div></div>
+        <div class="item"><div class="front">D3</div><div class="back">Roblox</div></div>
+        <div class="item"><div class="front">D4</div><div class="back">Brawl Stars</div></div>
+        <input type="text" placeholder="Fjala D" id="inputD">
+        <button onclick="checkAnswer('D','Videolojëra')">Kontrollo D</button>
+    </div>
+</div>
+<input type="text" placeholder="Fjala Finale" id="inputFinal">
+<button onclick="checkFinal('Argëtim')">Kontrollo Finale</button>
+
+<script>
+    document.querySelectorAll('.item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.add('revealed');
+        });
+    });
+
+    function checkAnswer(column, correct) {
+        let value = document.getElementById('input' + column).value.trim().toLowerCase();
+        if (value === correct.toLowerCase()) {
+            alert('Saktë!');
+        } else {
+            alert('Gabim, provo përsëri.');
+        }
+    }
+
+    function checkFinal(correct) {
+        let value = document.getElementById('inputFinal').value.trim().toLowerCase();
+        if (value === correct.toLowerCase()) {
+            alert('Urime! E gjete fjalën finale!');
+        } else {
+            alert('Jo e saktë, provo përsëri.');
+        }
+    }
+</script>
+</body>
+</html>
